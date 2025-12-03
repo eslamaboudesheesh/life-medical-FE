@@ -1,0 +1,28 @@
+//table {
+//  table-layout: fixed;
+//}
+
+.p-datatable-thead {
+  > tr {
+    > th {
+      background-color: var(--silver-100) !important;
+      width: 220px !important;
+      font-family: STCForward-Light, sans-serif;
+
+      &:first-child {
+        &:has(p-tableHeaderCheckbox) {
+          min-width: 20px !important;
+          width: 20px !important;
+        }
+      }
+    }
+  }
+}
+
+.p-datatable-tbody {
+  > tr {
+    > td {
+      color: var(--onyx-500) !important;
+    }
+  }
+}

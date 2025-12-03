@@ -1,3 +1,36 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+   
+];
+/* 
+
+ {
+        path: '',
+        canActivate: [thriftGuard],
+        children: [
+            {
+                path: '',
+                redirectTo: MAIN_ROUTES.CREATED_LOCATIONS,
+                pathMatch: 'full',
+            },
+            {
+                path: MAIN_ROUTES.CREATED_LOCATIONS,
+                loadComponent: () =>
+                    import(
+                        './features/created-locations/created-locations.component'
+                    ).then((m) => m.CreatedLocationsComponent),
+            },
+       
+      
+        ],
+    },
+    {
+        path: 'un-authorized',
+        loadComponent: () =>
+            import(
+                './features/auth/components/not-authorized/not-authorized.component'
+            ).then((m) => m.NotAuthorizedComponent),
+    },
+    { path: '**', redirectTo: '/' },
+*/
