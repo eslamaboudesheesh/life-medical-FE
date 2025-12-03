@@ -1,0 +1,22 @@
+<div class="hub-component-state">
+  <div class="hub-component-state__wrapper">
+    <div class="icon-box">
+      @if (iconUrl()) {
+        <img [ngSrc]="iconUrl()" [width]="60" [height]="60" priority alt="state-icon">
+      } @else {
+        <ng-content/>
+      }
+    </div>
+
+    <div class="content-box">
+      <h4>{{mainTitle() | translate | lowercase}}</h4>
+      <p class="content-box__subtitle">{{subTitle() | translate | lowercase}}</p>
+    </div>
+
+    @if (showReloadButton()) {
+      <div class="action-box">
+        <p-button [label]="'reload' | translate" [severity]="'secondary'" (onClick)="reloadPage()"/>
+      </div>
+    }
+  </div>
+</div>

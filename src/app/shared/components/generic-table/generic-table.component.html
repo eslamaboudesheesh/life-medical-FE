@@ -1,0 +1,56 @@
+<p-table
+  [columns]="columns()"
+  [value]="items()"
+  [scrollHeight]="'flex'"
+  [selection]="selectedLocations"
+  (selectionChange)="onSelectionChange($event)"
+  (onPage)="onPageChange($event)"
+  [rows]="rowsCounter"
+  [rowTrackBy]="trackByCode"
+  [totalRecords]="totalRecords()"
+  [paginator]=" showRecordInfo() ? showRecordInfo() : totalRecords() > 50"
+  [lazy]="true"
+  [(first)]="first"
+  [showCurrentPageReport]="true"
+  [currentPageReportTemplate]="`paginationReport` | translate:{itemsLength: items().length, totalRecords: '{totalRecords}'}"
+  (onHeaderCheckboxToggle)="onMainCheckboxChanged($event)"
+  dataKey="id"
+  [styleClass]="showRecordInfo() ? 'show-reports-only' : ''"
+>
+  <ng-template #header let-columns>
+    <tr>
+      <!-- TABLE HEADER CHECKBOX -->
+      @if (hasCheckBoxes()) {
+        <th>
+          <p-tableHeaderCheckbox />
+        </th>
+      }
+
+      @for (col of columns; track col?.field) {
+        <th [style.width]="col?.columnWidth + '!important'">
+          {{ (col.alias ?? col.field) | translate }}
+        </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template #body let-rowData let-columns="columns">
+    <tr>
+      <!-- TABLE BODY CHECKBOX -->
+      @if (hasCheckBoxes()) {
+        <td>
+          <p-tableCheckbox [value]="rowData" />
+        </td>
+      }
+
+      @for (col of columns; track col.field) {
+        @if (col?.template) {
+          <td>
+            <ng-container *ngTemplateOutlet="col.template; context: {$implicit: rowData}"/>
+          </td>
+        } @else {
+          <td>{{rowData[col?.field]}}</td>
+        }
+      }
+    </tr>
+  </ng-template>
+</p-table>

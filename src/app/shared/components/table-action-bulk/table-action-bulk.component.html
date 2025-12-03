@@ -1,0 +1,17 @@
+<section class="hub-bulk-actions">
+  <div class="hub-bulk-actions__counters-wrapper">
+    <div class="page-counter flex align-items-center gap-2">
+      <span>{{'selectedLocations' | translate:{selectedItems: genericTableCacheService.selectedItemsCounter()} }}</span>
+    </div>
+
+    @if (showBulkSelection()) {
+      <button class="all-records flex align-items-center cursor-pointer gap-1 underline text-primary font-medium" [class.un-select-color]="genericTableCacheService.isSelectingBulkAction()" (click)="applyHugeBulkSelection()">
+        <span>{{(genericTableCacheService.isSelectingBulkAction() ? 'unselect' : 'select') | translate}}</span>
+        <span>{{'bulkSelectCaption' | translate:{totalRecordsInDB: genericTableCacheService.totalAvailableItems()} }}</span>
+      </button>
+    }
+  </div>
+  <div class="hub-bulk-actions__buttons w-full md:w-auto">
+    <ng-content/>
+  </div>
+</section>

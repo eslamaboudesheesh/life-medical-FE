@@ -1,0 +1,59 @@
+@use "mixins" as *;
+
+:host {
+ height: 100%;
+}
+
+.hub-component-state {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 6.5rem;
+      height: 6.5rem;
+      border-radius: var(--stc-radius);
+      background-color: var(--primary-50);
+
+      ::ng-deep {
+        svg {
+          width: 4rem !important;
+          height: 4rem !important;
+        }
+      }
+    }
+
+    .content-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+
+      &__subtitle {
+        color: var(--silver-500);
+      }
+
+      h4 {
+        @include font-size($size: xl);
+
+        margin: 0;
+      }
+
+      p {
+        @include font-size($size: lg);
+
+        margin: 0;
+      }
+    }
+  }
+}
